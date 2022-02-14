@@ -35,7 +35,7 @@ public class BungeeOnlineTimeExpansion extends PlaceholderExpansion implements P
 
     @Override
     public @NotNull String getVersion() {
-        return "8.0";
+        return "8.2";
     }
 
     @Override
@@ -51,12 +51,12 @@ public class BungeeOnlineTimeExpansion extends PlaceholderExpansion implements P
     public @Nullable String onRequest(OfflinePlayer player, @NotNull String params) {
 
         if (player == null) {
-            return "ERROR1";
+            return "";
         }
 
         Long seconds = onlineTimes.get(player.getUniqueId());
         if (seconds == null) {
-            return "ERROR2";
+            return "";
         }
 
         int value;
@@ -67,7 +67,7 @@ public class BungeeOnlineTimeExpansion extends PlaceholderExpansion implements P
         } else if (params.equalsIgnoreCase("minutes")) {
             value = (int) (seconds / 60L);
         } else {
-            return "ERROR3";
+            return "UNIT ERROR";
         }
 
         return String.valueOf(value);
